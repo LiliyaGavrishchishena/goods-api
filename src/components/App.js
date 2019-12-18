@@ -1,13 +1,10 @@
-import React, { Component } from 'react';
-//components
+import React from 'react';
 import FilteredGoodsList from './FilteredGoodsList/FilteredGoodsList';
 
-export default class App extends Component {
-  render() {
-    return (
-      <div>
-        <FilteredGoodsList />
-      </div>
-    );
-  }
-}
+const App = () => (
+  <div>
+    <FilteredGoodsList />
+  </div>
+);
+
+export default App;

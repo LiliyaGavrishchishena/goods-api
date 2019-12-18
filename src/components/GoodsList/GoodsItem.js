@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React from 'react';
 
+import React from 'react';
 // styles
 import styles from './GoodsItem.module.css';
 
