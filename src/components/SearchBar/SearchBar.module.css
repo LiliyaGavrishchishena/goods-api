@@ -1,0 +1,23 @@
+.form {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  background-color: #afcde7;
+}
+.img {
+  width: 30px;
+  height: 30px;
+  padding: 10px;
+}
+
+.input {
+  display: flex;
+  color: #000;
+  border: none;
+  width: 100%;
+  font-size: 14px;
+  background-color: #afcde7;
+}
+.input:focus {
+  outline: none;
+}
