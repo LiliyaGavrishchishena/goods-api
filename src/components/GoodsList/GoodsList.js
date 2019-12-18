@@ -4,14 +4,16 @@ import GoodsItem from './GoodsItem';
 // styles
 import styles from './GoodsList.module.css';
 
-const GoodsList = ({ goods = [] }) => (
+const GoodsList = ({ goods = [], sortedPrice }) => (
   <table className={styles.list}>
     <caption className={styles.head}>Goods List</caption>
     <thead className={styles.thead}>
       <tr>
         <th className={styles.th}>#</th>
         <th className={styles.th}>Name</th>
-        <th className={styles.th}>Price</th>
+        <th className={styles.th} onClick={sortedPrice}>
+          Price
+        </th>
         <th className={styles.th}>Currency</th>
       </tr>
     </thead>
@@ -19,7 +21,7 @@ const GoodsList = ({ goods = [] }) => (
     <tbody>
       {goods.map(item => (
         <tr key={item.asin}>
-          <GoodsItem item={item} />
+          <GoodsItem item={item} sortedPrice={sortedPrice} />
         </tr>
       ))}
     </tbody>

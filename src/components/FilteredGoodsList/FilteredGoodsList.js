@@ -6,7 +6,8 @@ import GoodsList from '../GoodsList/GoodsList';
 const INITIAL_STATE = {
   goodsList: [],
   error: false,
-  filter: ''
+  filter: '',
+  sortedByPriceUp: true
 };
 
 export default class FilteredList extends Component {
@@ -38,6 +39,33 @@ export default class FilteredList extends Component {
     });
   };
 
+  handleChangeSortedByPrice = () => {
+    const { sortedByPriceUp, goodsList } = this.state;
+    const goods = sortedByPriceUp
+      ? [].concat(goodsList).sort((a, b) => {
+          if (a.price < b.price) {
+            return -1;
+          }
+          if (a.price > b.price) {
+            return 1;
+          }
+          return 0;
+        })
+      : [].concat(goodsList).sort((a, b) => {
+          if (a.price > b.price) {
+            return -1;
+          }
+          if (a.price < b.price) {
+            return 1;
+          }
+          return 0;
+        });
+    this.setState({
+      goodsList: goods,
+      sortedByPriceUp: !sortedByPriceUp
+    });
+  };
+
   render() {
     const { goodsList, filter } = this.state;
 
@@ -52,7 +80,10 @@ export default class FilteredList extends Component {
           handleChangeFilter={this.handleChangeFilter}
         />
         {filteredGoods.length > 0 ? (
-          <GoodsList goods={filteredGoods} />
+          <GoodsList
+            goods={filteredGoods}
+            sortedPrice={this.handleChangeSortedByPrice}
+          />
         ) : (
           <h3>Try to change your search</h3>
         )}
