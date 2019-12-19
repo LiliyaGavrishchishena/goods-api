@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-//components
+// components
 import App from './components/App';
-//styles
+// styles
 import './index.css';
 
 render(<App />, document.getElementById('root'));

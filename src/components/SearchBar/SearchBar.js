@@ -1,22 +1,20 @@
 import React from 'react';
-// assets
-import search from '../../asssets/search.png';
-// styles
-import styles from './SearchBar.module.css';
+// bootstrap
+import { Form, FormControl } from 'react-bootstrap';
 
 const SearchBar = ({ filter = '', handleChangeFilter }) => (
-  <form className={styles.form}>
-    <img src={search} alt="Search" className={styles.img} />
-    <input
-      className={styles.input}
+  <Form inline style={{ width: '100%' }}>
+    <Form.Label>Find product</Form.Label>
+    <FormControl
       type="text"
       name="filter"
       value={filter}
       placeholder="Search goods..."
       onChange={handleChangeFilter}
       autoComplete="off"
+      style={{ width: '100%' }}
     />
-  </form>
+  </Form>
 );
 
 export default SearchBar;

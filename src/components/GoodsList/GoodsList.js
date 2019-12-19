@@ -1,31 +1,31 @@
 import React from 'react';
+import { Table } from 'react-bootstrap';
 // components
 import GoodsItem from './GoodsItem';
-// styles
-import styles from './GoodsList.module.css';
 
-const GoodsList = ({ goods = [], sortedPrice }) => (
-  <table className={styles.list}>
-    <caption className={styles.head}>Goods List</caption>
-    <thead className={styles.thead}>
+const GoodsList = ({ goods = [], sortedPrice, sortedCategory }) => (
+  <Table striped bordered hover responsive="md">
+    <thead>
       <tr>
-        <th className={styles.th}>#</th>
-        <th className={styles.th}>Name</th>
-        <th className={styles.th} onClick={sortedPrice}>
-          Price
-        </th>
-        <th className={styles.th}>Currency</th>
+        <th onClick={sortedCategory}>Category</th>
+        <th>Name</th>
+        <th onClick={sortedPrice}>Price</th>
+        <th>Currency</th>
       </tr>
     </thead>
 
     <tbody>
       {goods.map(item => (
         <tr key={item.asin}>
-          <GoodsItem item={item} sortedPrice={sortedPrice} />
+          <GoodsItem
+            item={item}
+            sortedPrice={sortedPrice}
+            sortedCategory={sortedCategory}
+          />
         </tr>
       ))}
     </tbody>
-  </table>
+  </Table>
 );
 
 export default GoodsList;
