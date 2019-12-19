@@ -3,7 +3,9 @@
   width: 100%;
   align-items: center;
   background-color: #afcde7;
+  margin-bottom: 10px;
 }
+
 .img {
   width: 30px;
   height: 30px;

@@ -1,5 +1,5 @@
 import React from 'react';
-//assets
+// assets
 import search from '../../asssets/search.png';
 // styles
 import styles from './SearchBar.module.css';

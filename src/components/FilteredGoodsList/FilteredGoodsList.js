@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 // components
 import SearchBar from '../SearchBar/SearchBar';
 import GoodsList from '../GoodsList/GoodsList';
+import CategorySelector from '../CategorySelector/CategorySelector';
 
 const INITIAL_STATE = {
   goodsList: [],
   error: false,
   filter: '',
-  sortedByPriceUp: true
+  sortedByPriceUp: true,
 };
 
 export default class FilteredList extends Component {
@@ -35,7 +40,7 @@ export default class FilteredList extends Component {
 
   handleChangeFilter = ({ target: { value } }) => {
     this.setState({
-      filter: value
+      filter: value,
     });
   };
 
@@ -62,7 +67,7 @@ export default class FilteredList extends Component {
         });
     this.setState({
       goodsList: goods,
-      sortedByPriceUp: !sortedByPriceUp
+      sortedByPriceUp: !sortedByPriceUp,
     });
   };
 
@@ -70,23 +75,34 @@ export default class FilteredList extends Component {
     const { goodsList, filter } = this.state;
 
     const filteredGoods = goodsList.filter(item =>
-      item.name.toLowerCase().includes(filter.toLowerCase())
+      item.name.toLowerCase().includes(filter.toLowerCase()),
     );
 
     return (
       <>
-        <SearchBar
-          filter={filter}
-          handleChangeFilter={this.handleChangeFilter}
-        />
-        {filteredGoods.length > 0 ? (
-          <GoodsList
-            goods={filteredGoods}
-            sortedPrice={this.handleChangeSortedByPrice}
-          />
-        ) : (
-          <h3>Try to change your search</h3>
-        )}
+        <Container>
+          <Row>
+            <Col md={3} sm={3}>
+              <CategorySelector />
+            </Col>
+            <Col md={9} sm={9}>
+              <Row>
+                <SearchBar
+                  filter={filter}
+                  handleChangeFilter={this.handleChangeFilter}
+                />
+              </Row>
+              {filteredGoods.length > 0 ? (
+                <GoodsList
+                  goods={filteredGoods}
+                  sortedPrice={this.handleChangeSortedByPrice}
+                />
+              ) : (
+                <h3>Try to change your search</h3>
+              )}
+            </Col>
+          </Row>
+        </Container>
       </>
     );
   }
