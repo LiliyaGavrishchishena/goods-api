@@ -1,4 +1,5 @@
 import React from 'react';
+// bootstrap
 import { Table } from 'react-bootstrap';
 // components
 import GoodsItem from './GoodsItem';

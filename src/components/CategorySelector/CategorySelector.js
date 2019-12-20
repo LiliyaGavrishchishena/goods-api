@@ -1,4 +1,5 @@
 import React from 'react';
+// bootstrap
 import { Form } from 'react-bootstrap';
 
 const CategorySelector = ({ category = [], handleChangeCategory }) => (

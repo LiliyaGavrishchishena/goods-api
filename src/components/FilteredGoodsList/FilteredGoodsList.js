@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 // bootstrap
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Container, Row, Col, Alert } from 'react-bootstrap';
+
 // components
 import SearchBar from '../SearchBar/SearchBar';
 import GoodsList from '../GoodsList/GoodsList';
@@ -159,7 +158,10 @@ export default class FilteredList extends Component {
                   sortedCategory={this.handleChangeSortedByCategory}
                 />
               ) : (
-                <h3>Try to change your search</h3>
+                <Alert variant="danger">
+                  <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+                  <p>Try to change your search</p>
+                </Alert>
               )}
             </Col>
           </Row>
